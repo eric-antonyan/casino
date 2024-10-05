@@ -11,6 +11,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Account from "./pages/Account";
 import axios from "axios/index"; // Ensure this imports the correct RootState type
 import Miner from "./pages/Miner";
+import Reaction from "./pages/Reaction";
 
 const App = () => {
     const [userData, setUserData] = useState<any>(null);
@@ -63,6 +64,7 @@ const App = () => {
                     <Route path={'account'} element={<Account user={userData} />} />
                     <Route path={"games"}>
                         <Route path={"mines"} element={<Miner />} />
+                        <Route path={"reaction"} element={<Reaction />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

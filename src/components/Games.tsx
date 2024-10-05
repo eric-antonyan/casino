@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 const Games = () => {
     const games = [
         { id: 1, image: "https://storage.googleapis.com/kickthe/assets/images/games/mines-hacksawgaming/gb/gbp/tile_large.jpg", game: "mines" },
-        { id: 2, image: "https://via.placeholder.com/180x180" },
+        { id: 2, image: "https://www.askgamblers.com/uploads/original/other/41/c3/5c/17c37003047a36537ae69afd82cbd2148b/rocket-slots-casino-logo.png", game: "reaction" },
         { id: 3, image: "https://via.placeholder.com/180x180" },
         { id: 4, image: "https://via.placeholder.com/180x180" },
         { id: 5, image: "https://via.placeholder.com/180x180" },

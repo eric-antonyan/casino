@@ -1,0 +1,19 @@
+.text-primary-shadow {
+    text-shadow: 0 0 15px #ef4444;
+}
+
+.primary-shadow {
+    box-shadow: 0 0 15px #ef4444;
+}
+
+.text-secondary-shadow {
+    text-shadow: 0 0 15px #1dc7de;
+}
+
+.secondary-shadow {
+    box-shadow: 0 0 15px #1dc7de;
+}
+
+.text-white-shadow {
+    text-shadow: 0 0 15px #fff;
+}

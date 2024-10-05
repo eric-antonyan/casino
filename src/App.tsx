@@ -1,26 +1,73 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import "./css/shadows.css";
+import "./css/reset.css";
+import "./css/animations.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import SplashScreen from "./components/SplashScreen";
+import Home from "./pages/Home";
+import {Provider, useSelector} from "react-redux";
+import {RootState, store} from "./store";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Account from "./pages/Account";
+import axios from "axios/index"; // Ensure this imports the correct RootState type
+import Miner from "./pages/Miner";
+
+const App = () => {
+    const [userData, setUserData] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const dark = useSelector((state: RootState) => state.theme.dark);
+
+
+    useEffect(() => {
+        console.log("Dark mode is:", dark); // Check the value of dark
+        const bodyClassList = document.body.classList;
+        if (dark) {
+            bodyClassList.add("bg-darker");
+            bodyClassList.remove("bg-white");
+        } else {
+            bodyClassList.add("bg-white");
+            bodyClassList.remove("bg-darker");
+        }
+    }, [dark]);
+
+    useEffect(() => {
+        const anyWindow = window as any;
+        const telegram = anyWindow.Telegram;
+
+        if (telegram && telegram.WebApp) {
+            telegram.WebApp.expand();
+            const telegramData = telegram.WebApp.initDataUnsafe;
+            const user = telegramData?.user;
+
+            if (user) {
+                setTimeout(() => {
+                    setUserData(user);
+                    setLoading(false);
+                }, 1000);
+            } else {
+                setLoading(false);
+            }
+        } else {
+            setError("Telegram Web App is not available.");
+            setLoading(false);
+        }
+    }, []);
+
+    return (
+        !loading ? (
+            <BrowserRouter>
+                <Routes>
+                    <Route path={'/'} element={<Home />} />
+                    <Route path={'account'} element={<Account user={userData} />} />
+                    <Route path={"games"}>
+                        <Route path={"mines"} element={<Miner />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        ) : <SplashScreen/>
+    );
+};
 
 export default App;

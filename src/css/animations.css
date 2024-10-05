@@ -1,0 +1,38 @@
+:root {
+    --vh: 0
+}
+
+.loading-gradient {
+    background: linear-gradient(
+            90deg,
+            rgba(165, 165, 165, 0.1) 25%,
+            rgba(165, 165, 165, 0.2) 50%,
+            rgba(165, 165, 165, 0.1) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.bg-darker {
+    transition: background-color 0.3s ease;
+}
+.text-white {
+    transition: color 0.3s ease;
+}
+
+.sticky-form {
+    height: calc(var(--vh, 1vh) * 100);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

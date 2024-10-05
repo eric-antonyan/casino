@@ -1,0 +1,19 @@
+@media (min-width: 373px) {
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px rgb(0, 0, 0) inset !important; /* Change 'white' to your desired background color */
+        -webkit-text-fill-color: white !important; /* Change 'black' to your desired text color */
+    }
+}
+
+@media (min-width: 727px) {
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px rgb(9, 15, 30) inset !important; /* Change 'white' to your desired background color */
+        -webkit-text-fill-color: white !important; /* Change 'black' to your desired text color */
+    }
+}
+
+/* Optional: To ensure that the autofill styles are removed in all browsers */
+input {
+    background-color: inherit; /* Or any specific color */
+    color: inherit; /* To inherit the parent color */
+}

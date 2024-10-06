@@ -17,3 +17,7 @@
 .text-white-shadow {
     text-shadow: 0 0 15px #fff;
 }
+
+.rocket-backdrop {
+    backdrop-filter: brightness(30%);
+}
